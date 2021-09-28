@@ -1,4 +1,4 @@
-# rv-theme
+# rv-theme v1.0.1
 
 Metodología a seguir en el uso de las versiónes.
 ---------------------------------------------------
@@ -13,9 +13,10 @@ Metodología a seguir en el uso de las versiónes.
 Actualizacion de la  Versión: 1.0.1
 --------------------------------------
 * Se ha colocado los anuncios en todas las páginas.
+* Ahora los widgets pasan a ser parte de plugins, el cual está subido e instalado en el tema. Esto se hizo para tener una mejor gestión a la hora de sacar acuatlizaciones, consideramos que es mejor tener esa seccion por separado ya que en el futuro agregaremos muchas más cosas y es mejor que no se mescle con el codígo de fuente de la web.
 * Se ha mejorado la optimización en el manejo de archivos a nivel interno del tema.
 * Se ha colocado un limite para los extractos de los post. El límite anterior no estaba definido, en cambio, ahora el tema soporte un extracto de hasta 50 caracteres.
-* Se ha eliminado el "[]" o readme de los extractos.
+* Se ha eliminado el "[...]" o readme de los extractos.
 * Se han agregado nuevos sidebar correspondientes al footer.
 * Se ha agregado una nueva página en la plantilla del tema, está está aun en construccion pero de momento se puede utilizar. Pensamos establecer bloques de "Gutenberg" personalizados para mostrar plantillas de las categorías junto con su post destacado.
 

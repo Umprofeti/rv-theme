@@ -80,9 +80,9 @@
     border-bottom: 37px solid #cc9b34;
     border-right: 35px solid transparent;
     transform: rotate(90deg);
-    margin-top: -10%;
+    margin-top: -11%;
     margin-bottom: 0%;
-    margin-left: -17.5%;
+    margin-left: -12.5%;
     width: 479px;
 }
 .text-slogan{
@@ -226,10 +226,7 @@ p.post-content {
 .searching {
     font-size: 1.3rem;
 }
-.container-fluid > div:nth-child(1) > div:nth-child(1) {
-    margin-bottom: 5%;
-}
-   
+
 .card-search{
     max-width: 1106px;
 }

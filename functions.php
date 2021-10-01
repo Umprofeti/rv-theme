@@ -73,7 +73,7 @@ add_theme_support('title-tag');
 add_action('wp_enqueue_scripts', 'rendez_enqueue_styles');
 function rendez_enqueue_styles(){
     //Hoja de estilos
-    wp_enqueue_style('style', get_template_directory_uri().'/css/styles.css');
+    wp_enqueue_style('style', get_template_directory_uri().'./css/styles.css');
     wp_enqueue_style('normalize',get_template_directory_uri().'/css/normalize.css');
     //Registrar Bootstrap
     wp_register_style('bootstrap_css','https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css');

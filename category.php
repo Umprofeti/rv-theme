@@ -33,7 +33,7 @@
                         <div class="card-body">
                           <h5 class="card-title categoy-title"><a class="link" href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h5>
                           <p class="card-text category-description"><?php the_excerpt(); ?></p>
-                          <p class="card-text Author"><small class="text-muted"><i>Por: <?php echo(the_author()); ?> - <?php echo(the_date()); ?></i></small></p>
+                          <p class="card-text Author"><small class="text-muted"><i>Por: <?php the_author() ?> - <?php echo(the_date()); ?></i></small></p>
                         </div>
                     </div>
                 </div>
@@ -41,5 +41,6 @@
                 <?php wp_reset_postdata();?>
             </div>
         </div>
+        <?php dynamic_sidebar('rv_cart_edit'); ?>
     </main>
 <?php  get_footer();?>

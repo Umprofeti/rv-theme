@@ -22,7 +22,6 @@
             <div class="row">
                 <div class="col">
                     <div class="post-body">
-                        <div class="imagen"><?php the_post_thumbnail( '', array('class' => 'img-post') ); ?></div>
                         <div class="post-content">
                             <p class="post-content">
                                 <?php the_content('', array('class' => 'link')); ?>
@@ -32,5 +31,6 @@
                 </div>
             </div>
         </div>
+        <?php dynamic_sidebar('rv_cart_edit'); ?>
     </main>
 <?php get_footer(); ?>

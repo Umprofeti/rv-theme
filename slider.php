@@ -25,13 +25,13 @@
                             <?php $slider_post -> the_post(  ); ?>
                             <?php $link_publi = get_the_excerpt();?>
                             <div class="carousel-item active">
-                                <a href="<?php echo $link_publi ?>"><?php the_post_thumbnail('slider', array('class' => 'd-block w-25 img-fluid img-slider'));?></a>
+                                <a href="<?php echo $link_publi ?>"><?php the_post_thumbnail('slider', array('class' => 'd-block w-100 img-fluid img-slider'));?></a>
                             </div>
                             <?php wp_reset_postdata();?>
                             <?php  if($slider->have_posts()) : while ($slider -> have_posts()): $slider->the_post();  ?>
                             <?php $link_publi2 =  get_the_excerpt();  ?>
                             <div class="carousel-item">
-                                <a href="<?php echo $link_publi2 ?>"><?php the_post_thumbnail('slider', array('class' => 'd-block w-25 img-fluid img-slider'));?></a>
+                                <a href="<?php echo $link_publi2 ?>"><?php the_post_thumbnail('slider', array('class' => 'd-block w-100 img-fluid img-slider'));?></a>
                             </div>
                             <?php endwhile; ?>
                                 <?php wp_reset_postdata();?>

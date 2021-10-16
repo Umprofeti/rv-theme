@@ -58,10 +58,6 @@ function rv_cont_class($class){
 }
 
 
-
-
-
-
 //Tamaño de imagen Post
 add_image_size('destacada', '261','174', true);
 add_image_size('destacada1', '370','246.66', true);

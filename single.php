@@ -9,9 +9,6 @@
                         <h5 class="titulo-post-single">
                             <i><?php the_title(); ?></i> 
                         </h5>
-                        <div class="description">
-                            <b><i><?php the_excerpt(); ?></i></b>
-                        </div>
                         <p class="Author"><i>Fecha de publicación: <?php echo get_the_date(); ?></i></p>
                     </div>
                    </div>

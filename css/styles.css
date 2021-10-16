@@ -343,3 +343,10 @@ p.post-content {
     }
     
 }
+
+@media (max-width: 600px){
+
+    .categoy-title {
+        font-size: 0.9rem;
+    }
+}

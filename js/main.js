@@ -6,7 +6,10 @@ window.addEventListener("scroll", function(){
     let trapecio_activado = document.getElementById('trapecio');
     trapecio_activado.classList.toggle("trapecio-activado", window.scrollY > 300);
     if(tamaño > 992){
-        menu.classList.toggle('fixed-top', window.scrollY > 300);
+        menu.classList.toggle('fixed-top', window.scrollY > 200);
+    }
+    if(tamaño <= 768){
+        menu.classList.toggle('fixed-top', window.scrollY > 200);
     }
 });
 window.addEventListener("load",function () {
@@ -16,6 +19,9 @@ window.addEventListener("load",function () {
         while (contenedor.firstChild) {
             contenedor.removeChild(contenedor.firstChild);
           }
+    }
+    if(tamaño <= 768){
+        menu.classList.toggle('fixed-top');
     }
 });
 

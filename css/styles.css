@@ -1,8 +1,13 @@
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css");
 @import url('https://fonts.googleapis.com/css2?family=Volkhov:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Overpass+Mono:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;900&display=swap');
 *{
     font-family: 'Volkhov', serif;
+}
+:root{
+    --TitleFont:'Lato', sans-serif;
+    --Text: 'Lato', sans-serif;
 }
 /* Header*/
 .title-page,.subtitle{
@@ -274,6 +279,106 @@ p.post-content {
     color: rgb(114, 114, 114);
     font-size: 0.9rem;
 }
+.seccion{
+    border-top: dashed;
+}
+.EntretenimientoWrapper{
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    margin-bottom: 2%;
+}
+.circle{
+    border-radius: 50%;
+    border: solid;
+    padding: 1%;
+}
+.Entretenimiento-IMGContainer{
+    width: 100%;
+    border-radius: 50%;
+}
+.Tarjeta-Libros{
+    display: flex;
+    border: solid 1px #000;
+    justify-content: stretch;
+    margin-right: 2%;
+    margin-bottom: 2%;
+    height: 145px;
+    max-height: 170px;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.wrap{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+.img-containerBook{
+    width: 35%;
+}
+.img-book{
+    width: 100%;
+}
+.DescBook{
+    padding: 5% 0% 0% 5%;
+}
+.TitleCat{
+    font-family: var(--TitleFont);
+    font-weight: 900;
+    padding-top: 2%;
+}
+
+
+.TitleBook{
+    font-family: var(--TitleFont);
+    font-weight: 900;
+    font-size: 1rem;
+}
+
+.AuthorBook{
+    font-family: var(--Text);
+    font-weight: 400;
+    font-size: 0.9rem;
+
+}
+.BookDesc{
+    font-family: var(--Text);
+    font-weight: 400;
+    font-size: 0.9rem;
+}
+.wrapper{
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+}
+.HoResAe{
+    border: solid 1px #000;
+    border-radius: 10px;
+    margin-right: 4%;
+    margin-bottom: 2%;
+}
+.HotelContainerDesc{
+    padding-left: 10%;
+    padding-top: 8%;
+}
+.img-Hotel{
+    width: 100%;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+}
+.dashicons-star-filled::before, .dashicons-star-half::before, .dashicons-star-empty::before{
+    color:#ffbc00 !important;
+}
+.TitleHotel{
+    font-family: var(--TitleFont);
+    font-weight: 900;
+    font-size: 1rem;
+}
+.DescHotel{
+    font-family: var(--Text);
+    font-weight: 400;
+    font-size: 1rem;
+}
+
+
 /* Responsive */
 @media (max-width: 414px){
      .arrow{
@@ -349,4 +454,19 @@ p.post-content {
     .categoy-title {
         font-size: 0.9rem;
     }
+}
+@media screen and (max-width: 425px){
+
+    .EntretenimientoWrapper{
+        grid-template-columns: repeat(1, 1fr);
+    }
+    .wrap{
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .wrapper{
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+
 }

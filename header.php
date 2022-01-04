@@ -30,7 +30,7 @@
                         <span class="navbar-toggler-icon"></span>
                       </button>
                       <?php the_custom_logo(); ?>
-                      <?php wp_nav_menu($menurv); ?>
+                      <?php wp_nav_menu(); ?>
                     </div>
                   </nav>
             </div>

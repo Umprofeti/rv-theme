@@ -133,4 +133,212 @@ function rv_excerpt_more( $more ) {
 }
 add_filter('excerpt_more', 'rv_excerpt_more');
 
+
+// Custom Post Types para la seccion de recomendados
+
+function create_recomendacion_post_type(){
+
+    $labels = array(
+
+        'name' => __('Entretenimiento'),
+        'singular_name' => __('Entretenimeinto'),
+        'all_items'     => __('Todas las publicaciones'),
+        'view_item'     => __('Ver los post'),
+        'add_new_item'  => __('Agregar un nuevo post'),
+        'add_new'       => __('Agregar un nuevo post'),
+        'edit_item'     => __('Editar post'),
+        'update_item'   => __('Actualizar post'),
+        'search_items'  => __('Buscar post'),
+        'search_items'  => __('Entretenimeinto')
+
+    );
+
+    $args = array(
+
+        'labels'  => $labels,
+        'description' => 'Agregar un nuevo contenido de tipo Entretenimiento',
+        'menu_position' => 28,
+        'public' => true,
+        'has_archive' => true,
+        'map_meta_cap' => true,
+        'capability_type' => 'post',
+        'hierarchical' => true,
+        'rewrite' => array( 'slug' => false),
+        'menu_icon' => 'dashicons-tickets-alt',
+        'supports' => array(
+            'title',
+            'thumbnail',
+            'excerpt'
+        ),
+
+    );
+
+    register_post_type('entretenimiento', $args);
+
+}
+
+add_action('init', 'create_recomendacion_post_type');
+
+// Custom post Type para la sección de Libros
+
+function create_libros_post_type(){
+
+    $labels = array(
+
+        'name' => __('Libros'),
+        'singular_name' => __('Libros'),
+        'all_items'     => __('Todas las publicaciones'),
+        'view_item'     => __('Ver los post'),
+        'add_new_item'  => __('Agregar un nuevo post'),
+        'add_new'       => __('Agregar un nuevo post'),
+        'edit_item'     => __('Editar post'),
+        'update_item'   => __('Actualizar post'),
+        'search_items'  => __('Buscar post'),
+        'search_items'  => __('Libros')
+
+    );
+
+    $args = array(
+
+        'labels'  => $labels,
+        'description' => 'Agregar un nuevo contenido de tipo Libro',
+        'menu_position' => 28,
+        'public' => true,
+        'has_archive' => true,
+        'map_meta_cap' => true,
+        'capability_type' => 'post',
+        'hierarchical' => true,
+        'rewrite' => array( 'slug' => false),
+        'menu_icon' => 'dashicons-book',
+        'supports' => array(
+            'title',
+            'thumbnail',
+            'excerpt'
+        ),
+
+    );
+
+    register_post_type('libro', $args);
+
+}
+
+add_action('init', 'create_libros_post_type');
+
+// Registrar un nuevo custom field para el autor de los libros
+
+function registerAuthorField() {
+	add_meta_box( 'AuthorBook', __( 'Autor', 'recomendacionLibro' ), 'twp_mi_display_callback', 'libro' );
+}
+add_action( 'add_meta_boxes', 'registerAuthorField' );
+
+
+function twp_mi_display_callback( $post ) {
+	
+	$web1 = get_post_meta( $post->ID, 'web1', true );
+	
+	// Usaremos este nonce field más adelante cuando guardemos en twp_save_meta_box()
+	wp_nonce_field( 'mi_meta_box_nonce', 'meta_box_nonce' );
+	
+	
+	echo '<p><label for="web1_label">Nombre del autor: </label> <input type="text" name="web1" id="web1" value="'. $web1 .'" /></p>';
+	
+}
+
+function twp_save_meta_box( $post_id ) {
+	// Comprobamos si es auto guardado
+	if( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) return;
+	// Comprobamos el valor nonce creado en twp_mi_display_callback()
+	if( !isset( $_POST['meta_box_nonce'] ) || !wp_verify_nonce( $_POST['meta_box_nonce'], 'mi_meta_box_nonce' ) ) return;
+	// Comprobamos si el usuario actual no puede editar el post
+	if( !current_user_can( 'edit_post' ) ) return;
+	
+	
+	// Guardamos...
+	if( isset( $_POST['web1'] ) )
+	update_post_meta( $post_id, 'web1', $_POST['web1'] );
+}
+add_action( 'save_post', 'twp_save_meta_box' );
+
+
+//Registrar un Custom Post Type para la seccion de Hoteles
+
+function create_hoteles_post_type(){
+
+    $labels = array(
+
+        'name' => __('Hoteles'),
+        'singular_name' => __('Hoteles'),
+        'all_items'     => __('Todas las publicaciones'),
+        'view_item'     => __('Ver los post'),
+        'add_new_item'  => __('Agregar un nuevo post'),
+        'add_new'       => __('Agregar un nuevo post'),
+        'edit_item'     => __('Editar post'),
+        'update_item'   => __('Actualizar post'),
+        'search_items'  => __('Buscar post'),
+        'search_items'  => __('Hoteles')
+
+    );
+
+    $args = array(
+
+        'labels'  => $labels,
+        'description' => 'Agregar un nuevo contenido de tipo Hotel',
+        'menu_position' => 29,
+        'public' => true,
+        'has_archive' => true,
+        'map_meta_cap' => true,
+        'capability_type' => 'post',
+        'hierarchical' => true,
+        'rewrite' => array( 'slug' => false),
+        'menu_icon' => 'dashicons-location',
+        'supports' => array(
+            'title',
+            'thumbnail',
+            'excerpt'
+        ),
+
+    );
+
+    register_post_type('hotel', $args);
+
+}
+
+add_action('init', 'create_hoteles_post_type');
+
+//Custom field para la calificación del lugar
+
+
+function registerStarField() {
+	add_meta_box( 'Puntuacion', __( 'Puntuacion', 'recomendacionHotel' ), 'puntuacion_display_callback', 'hotel' );
+}
+add_action( 'add_meta_boxes', 'registerStarField' );
+
+
+function puntuacion_display_callback( $post ) {
+	
+	$web1 = get_post_meta( $post->ID, 'web1', true );
+	
+	// Usaremos este nonce field más adelante cuando guardemos en twp_save_meta_box()
+	wp_nonce_field( 'mi_meta_box_nonce', 'meta_box_nonce' );
+	
+	
+	echo '<p><label for="web1_label">Puntuación (desde el 0 al 5): </label> <input type="number" name="web1" id="web1" value="'. $web1 .'" min="0" max="5" step="any" /></p>';
+	
+}
+
+function Puntuacion_save_meta_box( $post_id ) {
+	// Comprobamos si es auto guardado
+	if( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) return;
+	// Comprobamos el valor nonce creado en twp_mi_display_callback()
+	if( !isset( $_POST['meta_box_nonce'] ) || !wp_verify_nonce( $_POST['meta_box_nonce'], 'mi_meta_box_nonce' ) ) return;
+	// Comprobamos si el usuario actual no puede editar el post
+	if( !current_user_can( 'edit_post' ) ) return;
+	
+	
+	// Guardamos...
+	if( isset( $_POST['web1'] ) )
+	update_post_meta( $post_id, 'web1', $_POST['web1'] );
+}
+add_action( 'save_post', 'Puntuacion_save_meta_box' );
+
 ?>

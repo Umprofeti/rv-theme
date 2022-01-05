@@ -259,6 +259,41 @@ function twp_save_meta_box( $post_id ) {
 }
 add_action( 'save_post', 'twp_save_meta_box' );
 
+// Custom field para el link de los libros
+
+function registerLinkBookField() {
+	add_meta_box( 'LinkBook', __( 'Link', 'recomendacionLibro' ), 'linkLibroCallback', 'libro' );
+}
+add_action( 'add_meta_boxes', 'registerLinkBookField' );
+
+
+function linkLibroCallback( $post ) {
+	
+	$link = get_post_meta( $post->ID, 'link', true );
+	
+	// Usaremos este nonce field más adelante cuando guardemos en twp_save_meta_box()
+	wp_nonce_field( 'mi_meta_box_nonce', 'meta_box_nonce' );
+	
+	
+	echo '<p><label for="link">Enlace:  </label> <input type="url" name="link" id="link" value="'. $link .'" /></p>';
+	
+}
+
+function saveLinkBook( $post_id ) {
+	// Comprobamos si es auto guardado
+	if( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) return;
+	// Comprobamos el valor nonce creado en twp_mi_display_callback()
+	if( !isset( $_POST['meta_box_nonce'] ) || !wp_verify_nonce( $_POST['meta_box_nonce'], 'mi_meta_box_nonce' ) ) return;
+	// Comprobamos si el usuario actual no puede editar el post
+	if( !current_user_can( 'edit_post' ) ) return;
+	
+	
+	// Guardamos...
+	if( isset( $_POST['link'] ) )
+	update_post_meta( $post_id, 'link', $_POST['link'] );
+}
+add_action( 'save_post', 'saveLinkBook' );
+
 
 //Registrar un Custom Post Type para la seccion de Hoteles
 
@@ -340,5 +375,41 @@ function Puntuacion_save_meta_box( $post_id ) {
 	update_post_meta( $post_id, 'web1', $_POST['web1'] );
 }
 add_action( 'save_post', 'Puntuacion_save_meta_box' );
+
+// Custom Field para el link de los hoteles, aerolínea etc
+
+function registerLinkHotelField() {
+	add_meta_box( 'LinkHotel', __( 'Link', 'recomendacionHotel' ), 'linkHotelCallback', 'hotel' );
+}
+add_action( 'add_meta_boxes', 'registerLinkHotelField' );
+
+
+function linkHotelCallback( $post ) {
+	
+	$link = get_post_meta( $post->ID, 'link', true );
+	
+	// Usaremos este nonce field más adelante cuando guardemos en twp_save_meta_box()
+	wp_nonce_field( 'mi_meta_box_nonce', 'meta_box_nonce' );
+	
+	
+	echo '<p><label for="link">Enlace:  </label> <input type="url" name="link" id="link" value="'. $link .'" /></p>';
+	
+}
+
+function saveLinkHotel( $post_id ) {
+	// Comprobamos si es auto guardado
+	if( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) return;
+	// Comprobamos el valor nonce creado en twp_mi_display_callback()
+	if( !isset( $_POST['meta_box_nonce'] ) || !wp_verify_nonce( $_POST['meta_box_nonce'], 'mi_meta_box_nonce' ) ) return;
+	// Comprobamos si el usuario actual no puede editar el post
+	if( !current_user_can( 'edit_post' ) ) return;
+	
+	
+	// Guardamos...
+	if( isset( $_POST['link'] ) )
+	update_post_meta( $post_id, 'link', $_POST['link'] );
+}
+add_action( 'save_post', 'saveLinkHotel' );
+
 
 ?>

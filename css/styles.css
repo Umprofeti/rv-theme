@@ -364,7 +364,7 @@ p.post-content {
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
 }
-.dashicons-star-filled::before, .dashicons-star-half::before, .dashicons-star-empty::before{
+.bi-star-fill::before, .bi-star-half::before, .bi-star::before{
     color:#ffbc00 !important;
 }
 .TitleHotel{
@@ -421,7 +421,14 @@ p.post-content {
         margin-left: -16.5% !important;
     }
 }
-  
+@media (max-width: 1920px) {
+    .navbar-brand {
+      visibility: hidden;
+    }
+    .trapecio{
+        margin-left: -16.5% !important;
+    }
+}
 @media (max-width: 1366px) {
     .trapecio{
         margin-left: -17.5% !important;

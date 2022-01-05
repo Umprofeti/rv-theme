@@ -31,6 +31,17 @@ Nota: Todas las secciones añadidas pueden ser programadas para su publicación 
 ## Corrección de errores
 
 * Error que mostraba el logo en medidas superiores a 1440px de ancho
+-----------------------------------------------
+
+# rv-theme v1.1.1
+-----------------------------------------------
+
+En esta versión de parche se han corregido errores y se han agregado campos en las secciones agregadas anteriormente.
+
+## Cambios
+
+* Se ha agregado un campo para introducir el link de los libros y los hoteles
+* Se ha corregido el error que no mostraba las estrellas en nevegadores fuera de Mozilla Firefox
 
 -----------------------------------------------
 >Equipo de desarrollo de Rendez-Vous Magazine

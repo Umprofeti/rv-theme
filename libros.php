@@ -16,6 +16,9 @@
             <div class="Box mt-5 mb-5">
                 <div class="wrap">
                 <?php  if($libros->have_posts()) : while ($libros -> have_posts()): $libros->the_post();  ?>
+                    <?php $link = get_post_meta(get_the_ID(), 'link', true) ?>
+                    <a href="<?php echo $link?>" style="color: #000;
+    text-decoration: none;">
                     <div class="Tarjeta-Libros ml-2">
                         <div class="img-containerBook">
                         <?php the_post_thumbnail('libro', array('class' => 'img-book'));?>
@@ -29,6 +32,7 @@
                             <p class="BookDesc"><?php the_excerpt('libro'); ?></p>
                         </div>
                     </div>
+                    </a>
                 <?php endwhile; ?>
                     <?php wp_reset_postdata();?>
                 <?php else : ?>
